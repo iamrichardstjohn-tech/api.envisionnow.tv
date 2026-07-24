@@ -1,0 +1,51 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "EnvisionNow.TV Enterprise API",
+    "version": "2.0.0",
+    "description": "Phase 1 enterprise backend foundation."
+  },
+  "servers": [
+    {
+      "url": "https://api.envisionnow.tv"
+    },
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Service health"
+      }
+    },
+    "/api/v1/auth/register": {
+      "post": {
+        "summary": "Register a platform user"
+      }
+    },
+    "/api/v1/auth/login": {
+      "post": {
+        "summary": "Create an authenticated session"
+      }
+    },
+    "/api/v1/applications": {
+      "post": {
+        "summary": "Submit a creative or partner application"
+      },
+      "get": {
+        "summary": "List applications (authorized roles)"
+      }
+    },
+    "/api/v1/catalog": {
+      "get": {
+        "summary": "Public catalog and brand destinations"
+      }
+    },
+    "/api/v1/admin/summary": {
+      "get": {
+        "summary": "Administrative platform summary"
+      }
+    }
+  }
+}

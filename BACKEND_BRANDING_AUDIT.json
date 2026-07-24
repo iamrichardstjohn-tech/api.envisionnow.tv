@@ -1,0 +1,17 @@
+{
+  "version": "1.1.0",
+  "backend_root": "EnvisionNow.TV-inactive housed/streaming-platform",
+  "updates": [
+    "replaced backend branding with the supplied EnvisionNow.TV artwork",
+    "created wide logo, eye icon, favicon, and branded hero assets",
+    "added branded backend landing page at /",
+    "added health endpoint at /health",
+    "converted Express server to export app for Vercel serverless deployment",
+    "added api/index.ts and vercel.json"
+  ],
+  "deployment_notes": [
+    "Set the Vercel Root Directory to the folder containing package.json.",
+    "The backend will be reachable at the Vercel project domain or api.envisionnow.tv.",
+    "This project is an API backend, not the main cinematic frontend."
+  ]
+}

@@ -1,0 +1,30 @@
+version: 0.2
+
+env:
+  variables:
+    CONTAINER_NAME: envisionnow-backend
+    IMAGE_TAG: latest
+
+phases:
+  pre_build:
+    commands:
+      - AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+      - ECR_REGISTRY="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
+      - REPOSITORY_URI="${ECR_REGISTRY}/${ECR_REPOSITORY_NAME}"
+      - COMMIT_TAG=$(echo "${CODEBUILD_RESOLVED_SOURCE_VERSION:-latest}" | cut -c 1-12)
+      - test -n "$COMMIT_TAG" || COMMIT_TAG=latest
+      - aws ecr get-login-password --region "$AWS_DEFAULT_REGION" | docker login --username AWS --password-stdin "$ECR_REGISTRY"
+      - npm ci
+      - npm run typecheck
+  build:
+    commands:
+      - docker build -t "${REPOSITORY_URI}:${COMMIT_TAG}" -t "${REPOSITORY_URI}:latest" .
+  post_build:
+    commands:
+      - docker push "${REPOSITORY_URI}:${COMMIT_TAG}"
+      - docker push "${REPOSITORY_URI}:latest"
+      - printf '[{"name":"%s","imageUri":"%s"}]' "$CONTAINER_NAME" "${REPOSITORY_URI}:${COMMIT_TAG}" > imagedefinitions.json
+      - cat imagedefinitions.json
+artifacts:
+  files:
+    - imagedefinitions.json

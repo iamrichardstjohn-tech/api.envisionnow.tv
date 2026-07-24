@@ -1,0 +1,12 @@
+{
+  "release": "3.0.0",
+  "workflow": "GitHub -> CodePipeline -> CodeBuild -> ECR -> ECS Fargate -> ALB -> api.envisionnow.tv",
+  "files_added": [
+    "buildspec.yml",
+    "infrastructure/aws/01-core-ecs-fargate.yml",
+    "infrastructure/aws/codebuild-ecr-policy.json",
+    "infrastructure/aws/AWS_SETUP_GUIDE.md",
+    "infrastructure/aws/CODEPIPELINE_FIELD_CHECKLIST.md"
+  ],
+  "deployed": false
+}
