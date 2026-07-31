@@ -1,30 +1,28 @@
 {
-  "name": "envisionnow-enterprise-backend-aws-deployment-kit",
-  "version": "3.0.0",
-  "description": "Enterprise API, command center, authentication foundation, creative intake, catalog and operations services for EnvisionNow.TV.",
-  "main": "src/server.ts",
+  "name": "envisionnow-tv",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "ts-node src/server.ts",
-    "build": "tsc",
-    "start": "node dist/src/server.js",
-    "typecheck": "tsc --noEmit",
-    "test": "jest --runInBand"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "typescript": "^4.5.4",
-    "ts-node": "^10.4.0",
-    "jest": "^27.0.6",
-    "body-parser": "^1.19.0"
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "react": "latest",
+    "react-dom": "latest"
   },
   "devDependencies": {
-    "@types/express": "^4.17.11",
-    "@types/jest": "^27.0.1",
-    "@types/node": "^16.11.7"
+    "@eslint/js": "latest",
+    "eslint": "latest",
+    "eslint-plugin-react-hooks": "latest",
+    "eslint-plugin-react-refresh": "latest",
+    "globals": "latest"
   },
-  "author": "Envision Media",
-  "license": "MIT",
   "engines": {
-    "node": "20.x"
+    "node": ">=22 <25"
   }
 }

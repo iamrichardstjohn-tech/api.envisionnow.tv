@@ -1,29 +1,19 @@
-# EnvisionNow.TV Enterprise Backend v2.0
+# EnvisionNow.TV — Vercel Ready
 
-This release is the Phase 1 enterprise foundation for the EnvisionNow.TV backend.
+## Local validation
+```bash
+npm install
+npm run build
+```
 
-## Implemented
-- Cinematic administrative command center
-- Health and readiness endpoints
-- Request IDs, security headers, origin controls and rate limiting
-- Password hashing using Node.js scrypt
-- Signed session tokens using HMAC-SHA256
-- Role-aware authentication and authorization middleware
-- Creative and partner application intake
-- Public catalog service
-- Protected administrative metrics and audit APIs
-- OpenAPI starter document
-- Docker image and AWS ECS/Fargate deployment templates
+## Vercel
+Import this folder/repository into Vercel. Vercel will use:
+- Framework: Vite
+- Build command: `npm run build`
+- Output directory: `dist`
 
-## Important production truth
-The application currently uses an explicitly labeled ephemeral in-memory repository. It is functional for development and architecture validation, but it is not suitable for durable production registrations or applications.
+## Required production follow-up
+The signup form currently uses the placeholder `https://formspree.io/f/YOUR_FORM_ID`. Replace it with a real Formspree or backend endpoint before collecting production submissions.
 
-The next release gate is:
-1. PostgreSQL schema and migrations
-2. Production repository adapter
-3. account activation and password reset
-4. email confirmation
-5. refresh-token rotation and revocation
-6. media upload/storage integration
-7. automated tests and security scanning
-8. backup and restore verification
+## Zero-install fallback
+The `static-deploy` folder contains the already compiled website and can be deployed directly to Vercel without running npm. In Vercel, set the Root Directory to `static-deploy`, Framework Preset to `Other`, leave Build Command empty, and use `.` as the Output Directory.
